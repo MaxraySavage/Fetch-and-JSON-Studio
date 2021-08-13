@@ -7,6 +7,7 @@ window.addEventListener('load', () => {
             console.log(astronautArray[0]);
             const astronautContainer = document.getElementById('container');
             let astronautDocFragment= document.createDocumentFragment();
+            astronautArray.sort((a, b) => b.hoursInSpace - a.hoursInSpace);
             for(const astronaut of astronautArray) {
                 const astronautDiv = document.createElement('div');
                 astronautDiv.classList.add('astronaut');
@@ -19,9 +20,9 @@ window.addEventListener('load', () => {
           
                    <li>Hours in space: ${astronaut.hoursInSpace}</li>
           
-                   <li>Active: ${astronaut.active}</li>
+                   <li${astronaut.active ? ' style= "color:green;"' : ''}>Active: ${astronaut.active}</li>
           
-                   <li>Skills: ${astronaut.skills.join(', ').slice(0, -2)}</li>
+                   <li>Skills: ${astronaut.skills.join(', ')}</li>
           
                 </ul>
           
@@ -30,6 +31,8 @@ window.addEventListener('load', () => {
              <img class="avatar" src="${astronaut.picture}">`
             }
             astronautContainer.appendChild(astronautDocFragment);
+            const header = document.querySelectorAll('h1')[0];
+            header.innerText = `Astronauts: ${astronautArray.length}`;
         });
     });
 });
