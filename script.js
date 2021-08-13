@@ -11,12 +11,25 @@ window.addEventListener('load', () => {
                 const astronautDiv = document.createElement('div');
                 astronautDiv.classList.add('astronaut');
                 astronautDocFragment.appendChild(astronautDiv);
-                const bioDiv = document.createElement('div');
-                bioDiv.classList.add('bio');
-                astronautDiv.appendChild(bioDiv);
-                
-                const profileImg = document.createElement('img');
+                astronautDiv.innerHTML = `<div class="bio">
+
+                <h3>${astronaut.firstName} ${astronaut.lastName}</h3>
+          
+                <ul>
+          
+                   <li>Hours in space: ${astronaut.hoursInSpace}</li>
+          
+                   <li>Active: ${astronaut.active}</li>
+          
+                   <li>Skills: ${astronaut.skills.join(', ').slice(0, -2)}</li>
+          
+                </ul>
+          
+             </div>
+          
+             <img class="avatar" src="${astronaut.picture}">`
             }
+            astronautContainer.appendChild(astronautDocFragment);
         });
     });
 });
