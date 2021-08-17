@@ -4,7 +4,6 @@ window.addEventListener('load', () => {
     fetch('https://handlers.education.launchcode.org/static/astronauts.json').then((response) => {
         response.json().then((json) => {
             const astronautArray = json;
-            console.log(astronautArray[0]);
             const astronautContainer = document.getElementById('container');
             let astronautDocFragment= document.createDocumentFragment();
             astronautArray.sort((a, b) => b.hoursInSpace - a.hoursInSpace);
